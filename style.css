@@ -1,0 +1,25 @@
+#bg{
+	position: absolute;
+	left: 0;
+	top: 0;
+	background-color: rgba(0,0,0,0.5);
+	width: 100%;
+	height: 100%;
+	z-index: 10;
+	display: none;
+}
+#grade_box{
+	position: absolute;
+	top: 50%;
+	left: 0;
+	right: 0;
+	margin-right:auto;
+	margin-left:auto;
+	min-height: 40%;
+	min-width: 20%;
+	width:300px;
+	height: 300px;
+	background-color: #EEE;
+	z-index: 20;
+
+}

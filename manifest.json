@@ -1,0 +1,22 @@
+﻿{
+  "name": "台大課程網成績分布",
+  "version": "0.1",
+  "permissions": [
+    "*://nol.ntu.edu.tw/*",
+    "*://if163.aca.ntu.edu.tw/*"
+  ],
+  
+  "content_scripts": [
+    {
+      "matches": ["*://nol.ntu.edu.tw/*"],
+      "js": ["jquery.js","script.js"],
+      "run_at": "document_end",
+      "all_frames": true
+    }
+  ],
+  "web_accessible_resources":[
+      "jquery-1.10.2.min.map",
+      "style.css"
+  ],
+  "manifest_version": 2
+}
