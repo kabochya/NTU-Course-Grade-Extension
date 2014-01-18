@@ -28,7 +28,6 @@ $(".grade",active_frame).click(function(){
 				for(var i=0;i<grade_arr.length;i++){
 					grade_arr[i]=parseInt(grade_arr[i].replace(/>\(/g,''));
 					accum[i]=(i==0?0:accum[i-1])+grade_arr[i];
-					//$current_box.append('<span>'+grades[i]+':'+grade_arr[i]+' '+accum[i]+' </span>');
 					$current_box.children('.bar').prepend('<span class="grade_bar '+grades_css[i]+'"><span class="bar_desc">'+grades[i]+':'+grade_arr[i]+'</span></span>');
 				}
 				for(var i=0;i<grade_arr.length;i++){
@@ -42,7 +41,7 @@ $(".grade",active_frame).click(function(){
 				$current_box.children('.text').append('Total Students:'+accum[9]+'  Pass Ratio:'+prate+'%  A Ratio:'+arate+'%');
 			}
 			else{
-				$current_box.children('.text').append('<span>Cannot find history grades.</span>')
+				$current_box.children('.text').append('<span>Cannot find history grades, probably due to:<br>1. New course or course wasn\'t opened last year<br>2. Single class course has split into classes</span>')
 			}
 			$current_row.show();
 		});
