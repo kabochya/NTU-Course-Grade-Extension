@@ -16,7 +16,8 @@
   ],
   "web_accessible_resources":[
       "jquery-1.10.2.min.map",
-      "style.css"
+      "style.css",
+      "loading.gif"
   ],
   "manifest_version": 2
 }
