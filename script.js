@@ -1,46 +1,49 @@
 var active_frame=window.parent.frames[2].document;
 var page_top=window.top.document;
-var grades=['X&F','C-','C ','C+','B-','B ','B+','A-','A ','A+'];
+var grades=['X/F','C-','C ','C+','B-','B ','B+','A-','A ','A+'];
+var grades_css=['F','C-','C ','Cp','B-','B ','Bp','A-','A ','Ap'];
 $('tr[align="center"]',active_frame).each(function(i){
 	$(this).prepend('<td '+(i==0?'':'class="grade"')+'>成績分布</td>');
+	$(this).after('<tr class="grade_row"><td class="grade_box" colspan="17"><div class="bar"></div><div class="text"></div></td></tr>');
 });
-if(window.top==window){
-	$('<link rel="stylesheet" type="text/css" href='+chrome.extension.getURL('style.css')+'><div id="bg"></div>').appendTo('html');
-	$('#bg',page_top).html('<div id="grade_box"></div>');
+$('tr.grade_row',active_frame).hide();
+
+if(window.parent.frames[2]==window){
+	$('<link rel="stylesheet" type="text/css" href='+chrome.extension.getURL('style.css')+'>').appendTo('html');
 }
 $(".grade",active_frame).click(function(){
 	var $this=$(this);
+	var $current_row=$this.parent('tr').next('tr.grade_row');
+	var $current_box=$current_row.children('td');
 	var year=$('#select_sem option:eq(0)',active_frame).val().split('-')[0]-1;
 	var term=$('#select_sem option[selected=""]',active_frame).val().split('-')[1];
 	var course_code=$this.siblings('td:eq(6)').text();
 	var class_id=$this.siblings('td:eq(3)').text();
-	$('#grade_box',page_top).html('');
 	$.get("//if163.aca.ntu.edu.tw/eportfolio/student/Curve.asp?Year="+year+"&Term="+term+"&CouCode="+course_code+"&Class="+(class_id.length==2?class_id:''),
 		function(res){
-		array = res.match(/>\(\d+/g);
-		if(array!==null){
-			for(var i=0;i<array.length;i++){
-				array[i]=array[i].replace(/>\(/g,'');
+			var grade_arr = res.match(/>\(\d+/g);
+			var accum = [];
+			if(grade_arr!==null){
+				$('.bar').show();
+				for(var i=0;i<grade_arr.length;i++){
+					grade_arr[i]=parseInt(grade_arr[i].replace(/>\(/g,''));
+					accum[i]=(i==0?0:accum[i-1])+grade_arr[i];
+					$current_box.children('.bar').prepend('<span class="grade_bar '+grades_css[i]+'"><span class="bar_desc">'+grades[i]+':'+grade_arr[i]+'</span></span>');
 				}
-			var student_count=0;
-			for(var i=0;i<array.length;i++){
-				array[i]=parseInt(array[i])
-				$('#grade_box',page_top).append('<span>'+grades[i]+':'+array[i]+'</span><br>');
-				student_count+=array[i];
+				for(var i=0;i<grade_arr.length;i++){
+					if(grade_arr[i]!=0){
+						$current_box.children('.bar').children('.grade_bar.'+grades_css[i]).width(100*accum[i]/accum[9]+'%');
+						$current_box.children('.bar').children('.grade_bar.'+grades_css[i]).slideDown(100);
+					}
+				}
+				var prate=100-Math.round(10000*grade_arr[0]/accum[9])/100;
+				var arate=Math.round(10000*(1-accum[6]/accum[9]))/100;
+				$current_box.children('.text').append('Total Students:'+accum[9]+'  Pass Ratio:'+prate+'%  A Ratio:'+arate+'%');
 			}
-			var prate=100-Math.round(10000*array[0]/student_count)/100;
-			var arate=Math.round(10000*(array[7]+array[8]+array[9])/student_count)/100;
-			$('#grade_box',page_top).append('Total Students:'+student_count+'<br>Pass Ratio:'+prate+'%<br>A Ratio:'+arate+'%');
-		}
-		else{
-			$('#grade_box',page_top).append('<span>Cannot find history grades.</span>')
-		}
-		var ht=$('#grade_box',page_top).height();
-		$('#grade_box',page_top).css({'margin-top':(-ht/2)+'px'});
-		$('#bg',page_top).fadeIn(100);
+			else{
+				$current_box.children('.text').append('<span>Cannot find history grades, probably due to:<br>1. New course or course wasn\'t opened last year<br>2. Single class course has split into classes</span>')
+			}
+			$current_row.show();
 		});
 	}	
 )
-$('#bg',page_top).click(function(){
-	$(this).fadeOut(100);
-})

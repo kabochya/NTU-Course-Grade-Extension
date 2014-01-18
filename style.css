@@ -1,25 +1,67 @@
-#bg{
-	position: absolute;
-	left: 0;
-	top: 0;
-	background-color: rgba(0,0,0,0.5);
+.grade_row{
+	background-color: #CCC;
+	
+}
+.grade_box{
+	width:100%;
+	
+}
+.grade_box>div.bar{
 	width: 100%;
-	height: 100%;
-	z-index: 10;
+	position: relative;
+	
+	height:20px;
+}
+.bar{
 	display: none;
 }
-#grade_box{
+.grade_bar{
+	height:20px;
 	position: absolute;
-	top: 50%;
-	left: 0;
-	right: 0;
-	margin-right:auto;
-	margin-left:auto;
-	min-height: 40%;
-	min-width: 20%;
-	width:300px;
-	height: 300px;
-	background-color: #EEE;
-	z-index: 20;
-
+	left:0px;
+	display: none;
+}
+.bar_desc{
+	float:right;
+	font-size: 16px;
+}
+.F{
+	background-color: #f00;
+	color:#0c0;
+}
+.C-{
+	background-color: #cf0;
+	color:#30f;
+}
+.C{
+	background-color: #4fee00;
+	color:#9f00ee;
+}
+.Cp{
+	background-color: #00dd1d;
+	color:#dd00c0;
+}
+.B-{
+	background-color: #00d44e;
+	color:#d40086;
+}
+.B{
+	background-color: #00c4a3;
+	color:#c40021;
+}
+.Bp{
+	background-color: #007db3;
+	color:#b33600;
+}
+.A-{
+	background-color: #000099;
+	color:#999900;
+}
+.A{
+	background-color: #5b00aa;
+	color:#4faa00;
+}
+.Ap{
+	background-color: #bb00af;
+	color:#00bb0c;
 }
