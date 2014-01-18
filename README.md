@@ -10,12 +10,12 @@ NTU-Course-Grade-Extension
 6.到選課網 要看分布直接按左邊"成績分布"...Done
 
 KNOWN BUGS
-#連點(應該秒殺吧XD)
-#字塞不下
+1.連點(應該秒殺吧XD)
+2.字塞不下
 
 TODO
-#UI optimization
-#Firefox Addon
-#選年
-#比較
-#tooltip mode
+1.UI optimization
+2.Firefox Addon
+3.選年
+4.比較
+5.tooltip mode
