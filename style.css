@@ -1,3 +1,6 @@
+.grade_btn{
+	width: 60px;
+}
 .grade_row{
 	background-color: #CCC;
 	
@@ -9,21 +12,19 @@
 .grade_box>div.bar{
 	width: 100%;
 	position: relative;
-	
-	height:20px;
-}
-.bar{
+	height:40px;
 	display: none;
 }
 .grade_bar{
-	height:20px;
+	
 	position: absolute;
-	left:0px;
+	right:0px;
 	display: none;
 }
 .bar_desc{
-	float:right;
+	float:left;
 	font-size: 16px;
+	text-align: left;
 }
 .F{
 	background-color: #f00;
