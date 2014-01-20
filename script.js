@@ -26,7 +26,7 @@ $(".grade_btn",active_frame).click(function(){
 	}
 	var year=$('#select_sem option:eq(0)',active_frame).val().split('-')[0]-1,
 	 term=$('#select_sem option[selected=""]',active_frame).val().split('-')[1],
-	 course_code=$this.siblings('td:eq(6)').text(),
+	 course_code=$this.siblings('td:eq(6)').text().replace(/E/,' '),
 	 teacher=$this.siblings('td:eq(-7)').children('a').text(),
 	 class_id=$this.siblings('td:eq(3)').text();
 	class_id=(class_id.length==2?class_id:'');	
