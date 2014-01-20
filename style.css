@@ -3,11 +3,18 @@
 }
 .grade_row{
 	background-color: #CCC;
-	
 }
 .grade_box{
 	width:100%;
-	
+}
+.grade_box>div.option{
+	margin-left: 0px;
+}
+.grade_class_id{
+	width:30px;
+}
+.option,.tname{
+	font-size: 18px;	
 }
 .grade_box>div.bar{
 	width: 100%;
@@ -15,18 +22,22 @@
 	height:40px;
 	display: none;
 }
+.text{
+	font-size: 18px;
+}
 .grade_bar{
-	
 	position: absolute;
 	right:0px;
 	display: none;
+	border-radius: 5px;
+	padding-left: 3px;
 }
 .bar_desc{
-	float:left;
+	float: left;
 	font-size: 16px;
 	text-align: left;
 }
-.F{
+.F{	
 	background-color: #f00;
 	color:#0c0;
 }
@@ -47,16 +58,16 @@
 	color:#d40086;
 }
 .B{
-	background-color: #00c4a3;
+	background-color: #00a4b3;
 	color:#c40021;
 }
 .Bp{
 	background-color: #007db3;
-	color:#b33600;
+	color:#f39600;
 }
 .A-{
-	background-color: #000099;
-	color:#999900;
+	background-color: #003399;
+	color:#CCCC00;
 }
 .A{
 	background-color: #5b00aa;

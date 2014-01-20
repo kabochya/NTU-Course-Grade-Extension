@@ -8,12 +8,7 @@ NTU-Course-Grade-Extension
 5. 把剛剛的資料夾拉進畫面
 6. 到選課網 要看分布直接按左邊"成績分布"...Done
 
-##KNOWN BUGS
-* 字塞不下
-
-##TODO
-* UI optimization
+##TODO Features
 * Firefox Addon
-* 選年
 * 比較
 * tooltip mode
