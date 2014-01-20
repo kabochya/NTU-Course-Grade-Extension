@@ -74,7 +74,7 @@ function ajaxRequest(year,term,course_code,class_id,teacher,$current_row){
 			var prate=100-Math.round(10000*grade_arr[0]/accum[9])/100;
 			var arate=Math.round(10000*(1-accum[6]/accum[9]))/100;
 			$current_box.children('.text').html('總學生數:'+accum[9]+'  及格率:'+prate+'%  A-(含)以上比率:'+arate+'%');
-			$.get('//nol.ntu.edu.tw/nol/coursesearch/search_result.php?alltime=yes&allproced=yes&cstype=5&csname='+course_code+'&current_sem='+parseInt(year,10)+'-'+term+'&startrec='+(class_id==''?0:class_id),
+			$.get('//nol.ntu.edu.tw/nol/coursesearch/search_result.php?alltime=yes&allproced=yes&cstype=5&csname='+course_code+'&current_sem='+parseInt(year,10)+'-'+term+'&startrec='+(class_id==''?0:parseInt(class_id,10)-1),
 			function(res){
 				var str=res.match(/teacher\.php\?.+?<\/A>/);
        				var qteacher=str[0].replace(/teacher\.php\?.+?>/,'').replace(/<\/A>/,'');
@@ -84,7 +84,7 @@ function ajaxRequest(year,term,course_code,class_id,teacher,$current_row){
 	      			else{
 	      				$current_box.find('span.tname').css('color','black')
 	      			}
-	      			$current_box.find('span.tname').html('授課教授:'+qteacher+'(統一教學班次顯示可能會不正確，一切資訊以校方為主)');
+	      			$current_box.find('span.tname').html('授課教授:'+qteacher+'(統一教學教師顯示可能會不正確，一切資訊以校方為主)');
 			},'text')
 		}
 		else{
