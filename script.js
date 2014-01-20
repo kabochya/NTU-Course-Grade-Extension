@@ -7,7 +7,7 @@ if(window.parent.frames[2]==window){
 }
 $('tr[align="center"]',active_frame).each(function(i){
 	$(this).prepend('<td '+(i==0?'':'class="grade_btn" active=0')+'>成績分布</td>');
-	$('.grade_btn').width('60px');
+	$('.grade_btn').width('64px');
 	$(this).after('<tr class="grade_row"><td class="grade_box" colspan="17"><div class="option"></div><span class="tname"></span><div class="bar"></div><span class="text"></span></td></tr>');
 });
 $('tr.grade_row',active_frame).hide();
